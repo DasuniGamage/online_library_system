@@ -1,6 +1,7 @@
 package com.rootcode.online_library_system.service.serviceIMPL;
 
 import com.rootcode.online_library_system.dto.UserRegistrationDto;
+import com.rootcode.online_library_system.exception.NotFoundException;
 import com.rootcode.online_library_system.model.User;
 import com.rootcode.online_library_system.repository.UserRepository;
 import com.rootcode.online_library_system.service.UserService;
@@ -31,6 +32,6 @@ public class UserServiceIMPL implements UserService {
     @Override
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new NotFoundException("No users found"));
     }
 }
